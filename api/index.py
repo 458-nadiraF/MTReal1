@@ -96,11 +96,11 @@ class handler(BaseHTTPRequestHandler):
                 # Add any other required headers here
             }
             
-            response = requests.post(
-                forward_url,
-                json=buy_json,
-                headers=headers
-            )
+            # response = requests.post(
+            #     forward_url,
+            #     json=buy_json,
+            #     headers=headers
+            # )
             
             execution_duration = (time.time() - start_time) * 1000
             # Send response back to the original client
