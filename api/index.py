@@ -109,35 +109,35 @@ class handler(BaseHTTPRequestHandler):
             self.end_headers()
             
             # You can customize the response based on the forwarded request's response
-            response_data = {
-                "message": "POST received and forwarded",
-                "forward_status": response.status_code,
-                "received_json":received_json,
-                "buy_json": buy_json, 
-                "forward_response": response.json()  # Include this if you want to return the forwarded API's response
-            }
-            self.wfile.write(json.dumps(response_data).encode())
+            # response_data = {
+            #     "message": "POST received and forwarded",
+            #     "forward_status": response.status_code,
+            #     "received_json":received_json,
+            #     "buy_json": buy_json, 
+            #     "forward_response": response.json()  # Include this if you want to return the forwarded API's response
+            # }
+            # self.wfile.write(json.dumps(response_data).encode())
            
-            log_message = (
-                f" MTReal1. Execution Duration: {execution_duration}ms\n"
-                f"Response Content: {response_data}\n"
-                "-------------------------------------------\n"
-            )
-            headers2 = {
-                'Accept': 'application/json',
-                'Content-Type':'application/json'
-                # Add any other required headers here
-            }
-            response = requests.post(
-                    os.getenv('SPREADSHEET'),
-                    json=log_message,
-                    headers=headers2
-                )
-            if response.status_code == 200:
-                return None
-            else:
-                print(f"Error: API request for placing order failed with status code {response.status_code}")
-                return None
+            # log_message = (
+            #     f" MTReal1. Execution Duration: {execution_duration}ms\n"
+            #     f"Response Content: {response_data}\n"
+            #     "-------------------------------------------\n"
+            # )
+            # headers2 = {
+            #     'Accept': 'application/json',
+            #     'Content-Type':'application/json'
+            #     # Add any other required headers here
+            # }
+            # response = requests.post(
+            #         os.getenv('SPREADSHEET'),
+            #         json=log_message,
+            #         headers=headers2
+            #     )
+            # if response.status_code == 200:
+            #     return None
+            # else:
+            #     print(f"Error: API request for placing order failed with status code {response.status_code}")
+            #     return None
             
         except Exception as e:
             # Handle any errors
